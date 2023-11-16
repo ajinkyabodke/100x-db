@@ -1,6 +1,6 @@
 "use strict";
 
-import post from "./post";
+const post = require("./post");
 
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -16,8 +16,13 @@ module.exports = (sequelize, DataTypes) => {
   }
   Media.init(
     {
-      id: { type: DataTypes.BIGINT, autoIncrement: true, allowNull: false },
-      index: { type: DataTypes.INT(15), allowNull: false },
+      id: {
+        type: DataTypes.BIGINT,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
+      index: { type: DataTypes.INTEGER, allowNull: false },
       postId: {
         type: DataTypes.BIGINT,
         allowNull: true,

@@ -1,6 +1,6 @@
 "use strict";
 
-import user from "./user";
+const user = require("./user");
 
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -16,7 +16,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Follow.init(
     {
-      id: { type: DataTypes.BIGINT, autoIncrement: true, allowNull: false },
+      id: {
+        type: DataTypes.BIGINT,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
       followerId: {
         type: DataTypes.BIGINT,
         allowNull: false,

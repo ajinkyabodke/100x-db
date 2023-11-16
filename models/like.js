@@ -1,7 +1,7 @@
 "use strict";
 
-import user from "./user";
-import post from "./post";
+const user = require("./user");
+const post = require("./post");
 
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Like.init(
     {
-      id: { type: DataTypes.BIGINT, autoIncrement: true, allowNull: false },
+      id: { type: DataTypes.BIGINT, autoIncrement: true, allowNull: false ,primaryKey: true},
       userId: {
         type: DataTypes.BIGINT,
         allowNull: false,
