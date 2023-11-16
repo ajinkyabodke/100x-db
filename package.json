@@ -1,0 +1,16 @@
+{
+  "name": "100x-db",
+  "module": "index.ts",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "pg": "^8.11.3",
+    "sequelize": "^6.35.0",
+    "sequelize-cli": "^6.6.2"
+  }
+}
