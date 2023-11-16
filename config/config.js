@@ -7,7 +7,7 @@ if (
   !process.env.DB_NAME
 ) {
   throw new Error(
-    "Please set all DB environment variables in .env file!!!!!!!!!!!!!!!!!"
+    "Please set all DB environment variables in .env file!!!!!!!!!!!!!!!!!",
   );
 }
 
