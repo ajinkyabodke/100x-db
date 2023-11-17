@@ -1,9 +1,15 @@
 "use strict";
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, { DataTypes }) {
     await queryInterface.createTable("Likes", {
-      id: { type: DataTypes.BIGINT, autoIncrement: true, allowNull: false },
+      id: {
+        type: DataTypes.BIGINT,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
       userId: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -20,9 +26,26 @@ module.exports = {
           key: "id",
         },
       },
+      timestamp: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        allowNull: false,
+      },
     });
+    /**
+     * Add altering commands here.
+     *
+     * Example:
+     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
+     */
   },
+
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("Likes");
+    /**
+     * Add reverting commands here.
+     *
+     * Example:
+     * await queryInterface.dropTable('users');
+     */
   },
 };

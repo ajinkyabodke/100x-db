@@ -37,6 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         values: ["image", "video", "gif"],
         allowNull: false,
       },
+    
     },
     {
       sequelize,

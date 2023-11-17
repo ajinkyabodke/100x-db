@@ -17,7 +17,12 @@ module.exports = (sequelize, DataTypes) => {
   }
   Like.init(
     {
-      id: { type: DataTypes.BIGINT, autoIncrement: true, allowNull: false ,primaryKey: true},
+      id: {
+        type: DataTypes.BIGINT,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true,
+      },
       userId: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -33,6 +38,11 @@ module.exports = (sequelize, DataTypes) => {
           model: post,
           key: "id",
         },
+      },
+      timestamp: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        allowNull: false,
       },
     },
     {
