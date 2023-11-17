@@ -15,7 +15,7 @@ module.exports = {
         allowNull: false,
       },
       username: {
-        type: Sequelize.STRING(30),
+        type: Sequelize.STRING(50),
         allowNull: false,
         unique: true,
       },
@@ -38,11 +38,11 @@ module.exports = {
       },
       location: {
         type: Sequelize.STRING(30),
-        allowNull: false,
+        allowNull: true,
       },
       website: {
         type: Sequelize.STRING(50),
-        allowNull: false,
+        allowNull: true,
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -53,10 +53,6 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
         defaultValue: Sequelize.NOW,
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        allowNull: true,
       },
       dateOfBirth: {
         type: Sequelize.DATE,
