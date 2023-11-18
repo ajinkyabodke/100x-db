@@ -1,6 +1,7 @@
 # 100x-db
 
 ## Schema Design
+![Alt text](image.png)
 
 ### - User (table name: Users)
 
