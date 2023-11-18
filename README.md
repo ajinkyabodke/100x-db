@@ -11,8 +11,10 @@
 - emailVerifiedAt: timestamp nullable
 - passwordHash: string 512 chars max (not null)
 - bio: string 160 chars max (not null)
-- location: string 50 chars max (nullable)
-- website: string 50 chars max (nullable)
+- location: string 50 chars max (not null)
+- website: string 100 chars max (not null)
+- profilePicture: string 1024 chars max (not null)
+- coverPicture: string 1024 chars max (not null)
 - dateOfBirth: timestamp (not null)
 - createdAt: timestamp (not null, default: NOW)
 - updatedAt: timestamp (not null, default: NOW)
@@ -33,7 +35,7 @@
 - id: bigint serial primary key
 - index: int (not null)
 - postId: bigint foreign key nullable (references: posts.id)
-- url: string 2048 chars max (not null)
+- mediaUrl: string 2048 chars max (not null)
 - type: enum ['image' | 'video' | 'gif'] (not null)
 - deletedAt: { type: DataTypes.DATE, allowNull: true }, // not including this in the actual schema since we will only get the media of Posts using SQL joins.
 

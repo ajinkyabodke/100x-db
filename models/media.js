@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
           key: "id",
         },
       },
-      url: { type: DataTypes.STRING(2048), allowNull: false },
+      mediaUrl: { type: DataTypes.STRING(2048), allowNull: false },
       type: {
         type: DataTypes.ENUM,
         values: ["image", "video", "gif"],

@@ -47,11 +47,19 @@ module.exports = (sequelize, DataTypes) => {
       },
       location: {
         type: DataTypes.STRING(30),
-        allowNull: true,
+        allowNull: false,
       },
       website: {
-        type: DataTypes.STRING(50),
-        allowNull: true,
+        type: DataTypes.STRING(100),
+        allowNull: false,
+      },
+      profilePicture: {
+        type: DataTypes.STRING(1024),
+        allowNull: false,
+      },
+      coverPicture: {
+        type: DataTypes.STRING(1024),
+        allowNull: false,
       },
       createdAt: {
         type: DataTypes.DATE,
