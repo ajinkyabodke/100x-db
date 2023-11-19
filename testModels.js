@@ -3,10 +3,12 @@ import user from "./models/user.js";
 import { Sequelize, DataTypes } from "sequelize";
 import post from "./models/post.js";
 import follow from "./models/follow.js";
+import like from "./models/like.js";
 
 const User = user(db.sequelize, DataTypes);
 const Post = post(db.sequelize, DataTypes);
 const Follow = follow(db.sequelize, DataTypes);
+const Like = like(db.sequelize, DataTypes);
 
 const addUser = async () => {
   try {
@@ -101,3 +103,32 @@ const getFollow = async () => {
 };
 // getFollow();
 
+const addLike = async () => {
+  try {
+    const newLike = await Like.create({
+      userId: 2,
+      postId: 1,
+      timestamp: new Date(),
+      updatedAt: new Date(),
+      createdAt: new Date(),
+    });
+    console.log("New like auto-generated ID:", newLike.id);
+  } catch (errors) {
+    console.log("🔴 Error : ", errors);
+  }
+};
+// addLike();
+
+const getLike = async () => {
+  try {
+    const likes = await Like.findAll();
+    likes.forEach((like) => {
+      console.log(
+        `👍 Like ID : ${like.dataValues.id} => ${like.dataValues.userId} `
+      );
+    });
+  } catch (errors) {
+    console.log("🔴 Error : ", errors?.errors?.[0]?.message);
+  }
+};
+// getLike();
