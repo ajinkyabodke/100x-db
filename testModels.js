@@ -5,6 +5,8 @@ import post from "./models/post.js";
 import follow from "./models/follow.js";
 import like from "./models/like.js";
 
+const Table = require("cli-table");
+
 const User = user(db.sequelize, DataTypes);
 const Post = post(db.sequelize, DataTypes);
 const Follow = follow(db.sequelize, DataTypes);
@@ -13,9 +15,10 @@ const Like = like(db.sequelize, DataTypes);
 const addUser = async () => {
   try {
     const newUser = await User.create({
-      name: "Demo User",
-      username: "demo_user1",
-      email: "demo@example.com",
+      id: "3",
+      name: "Demo User 2",
+      username: "demo_user2",
+      email: "demo2@example.com",
       passwordHash: "hashed_password", // replace with a hashed password
       bio: "This is a demo user bio.",
       location: "Demo City",
@@ -33,10 +36,16 @@ const addUser = async () => {
 const getUsers = async () => {
   try {
     const users = await User.findAll();
+
     users.forEach((user) => {
-      console.log(
-        `User ID : ${user.dataValues.id} => ${user.dataValues.name} `
+      const table = new Table();
+      table.push(
+        { "User ID": user.dataValues.id },
+        { Name: user.dataValues.name },
+        { Email: user.dataValues.email }
       );
+
+      console.log(table.toString());
     });
   } catch (errors) {
     console.log("🔴 Error : ", errors?.errors?.[0]?.message);
@@ -47,9 +56,9 @@ const getUsers = async () => {
 const addPost = async () => {
   try {
     const newPost = await Post.create({
-      type: "post",
+      type: "repost",
       userId: 1, // Replace with the actual user ID
-      content: "This is a demo post content.",
+      content: "This is a demo repost.",
       updatedAt: new Date(),
       createdAt: new Date(),
     });
@@ -63,15 +72,20 @@ const getPosts = async () => {
   try {
     const posts = await Post.findAll();
     posts.forEach((post) => {
-      console.log(
-        `⚪️Post ID : ${post.dataValues.id} => ${post.dataValues.content} `
+      const table = new Table();
+      table.push(
+        { "Post ID": post.dataValues.id },
+        { Content: post.dataValues.content },
+        { Type : post.dataValues.type }
       );
+
+      console.log(table.toString());
     });
   } catch (errors) {
     console.log("🔴 Error : ", errors?.errors?.[0]?.message);
   }
 };
-// getPosts();
+getPosts();
 
 const addFollow = async () => {
   try {
