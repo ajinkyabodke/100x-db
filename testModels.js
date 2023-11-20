@@ -1,5 +1,5 @@
 import db from "./models/index.js";
-import user from "./models/user.js";
+import { User, Post, Follow, Like } from "./models";
 import { Sequelize, DataTypes } from "sequelize";
 import post from "./models/post.js";
 import follow from "./models/follow.js";
@@ -7,10 +7,10 @@ import like from "./models/like.js";
 
 const Table = require("cli-table");
 
-const User = user(db.sequelize, DataTypes);
-const Post = post(db.sequelize, DataTypes);
-const Follow = follow(db.sequelize, DataTypes);
-const Like = like(db.sequelize, DataTypes);
+// const User = user(db.sequelize, DataTypes);
+// const Post = post(db.sequelize, DataTypes);
+// const Follow = follow(db.sequelize, DataTypes);
+// const Like = like(db.sequelize, DataTypes);
 
 const addUser = async () => {
   try {
@@ -76,7 +76,7 @@ const getPosts = async () => {
       table.push(
         { "Post ID": post.dataValues.id },
         { Content: post.dataValues.content },
-        { Type : post.dataValues.type }
+        { Type: post.dataValues.type }
       );
 
       console.log(table.toString());
